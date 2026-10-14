@@ -118,5 +118,5 @@ All project data is decoupled from UI presentation in `src/data/projects.ts`. To
 - **Role:** Data Analyst | Business Intelligence | Data Analytics
 - **Location:** Ernakulam, Kerala, India
 - **GitHub:** [github.com/irfan564](https://github.com/irfan564)
-- **LinkedIn:** [linkedin.com/in/muhammedirfanma](https://www.linkedin.com/in/muhammedirfanma/)
+- **LinkedIn:** [linkedin.com/in/muhammed-irfan-911208251](https://www.linkedin.com/in/muhammed-irfan-911208251?utm_source=share_via&utm_content=profile&utm_medium=member_android)
 - **Email:** [muhammedirfanma112@gmail.com](mailto:muhammedirfanma112@gmail.com)

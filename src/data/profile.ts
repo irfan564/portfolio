@@ -86,7 +86,7 @@ export const profile = {
   contact: {
     email: "muhammedirfanma112@gmail.com",
     github: "https://github.com/irfan564",
-    linkedin: "https://www.linkedin.com/in/muhammedirfanma/",
+    linkedin: "https://www.linkedin.com/in/muhammed-irfan-911208251?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     location: "Ernakulam, Kerala, India"
   }
 };
