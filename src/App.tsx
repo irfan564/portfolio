@@ -1,30 +1,28 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { MouseGlow } from './components/MouseGlow';
 import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ProjectsPage } from './pages/ProjectsPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
-import { ContactPage } from './pages/ContactPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export function App() {
   return (
     <BrowserRouter>
-      <div className="relative min-h-screen bg-[#070A12] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-300">
+      <div className="min-h-screen bg-[#FAFAF9] text-slate-900 flex flex-col font-sans selection:bg-slate-200">
         <ScrollToTop />
-        <MouseGlow />
         <Navbar />
 
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:id" element={<ProjectDetailPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* Direct legacy aliases to main single-page anchors */}
+            <Route path="/about" element={<Navigate to="/#skills" replace />} />
+            <Route path="/projects" element={<Navigate to="/#projects" replace />} />
+            <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+            {/* 404 handler */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
 

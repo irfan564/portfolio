@@ -1,122 +1,103 @@
-# Muhammed Irfam M A — Data Analyst & Business Intelligence Portfolio
+# Muhammed Irfan M A — Data Analyst Portfolio
 
-> **"Turning Raw Data Into Meaningful Decisions."**  
-> A modern, editorial, and interactive portfolio website designed specifically for recruiters, hiring managers, and technology companies.
+A clean, honest, recruiter-first portfolio website for **Muhammed Irfan M A**, Data Analyst (BCA 2026, A+ certified in Data Analytics with Dashboards).
 
----
-
-## 🌟 Overview & Key Highlights
-
-This website is designed with a high-end software & technology aesthetic—combining midnight-navy themes, electric cyan accents, subtle glassmorphism, responsive typography, and rich interactive data visualizations.
-
-- **Honest Professional Representation:** Built around real analytical foundations (BCA from Al Ameen College & Data Analytics course at SkillSpark Finishing School) without fabricated corporate claims or fake skill percentages.
-- **Interactive Abstract Data Canvas:** HTML5 Canvas particle telemetry system demonstrating network nodes, query latency monitors, and relational database metrics.
-- **"Data, Made Visible" Interactive BI Showcase:** An interactive sample business intelligence dashboard powered by **Recharts**, featuring monthly revenue trajectories, category margin contributions, and fulfillment SLA distributions with custom tooltips and dynamic metric switchers.
-- **Comprehensive Case Studies:** Filterable project showcase (`/projects`) with deep-dive case studies (`/projects/:id`) that include real SQL CTE window functions, Python Pandas data validation scripts, and strategic business implications.
-- **Multi-Page Architecture:** Built with **React Router** for seamless routing across Home, About, Filterable Projects, Project Details, and Contact pages.
+Built with React, Vite, Tailwind CSS, and React Router. Designed with a calm, light editorial layout, clear typography, and verified information.
 
 ---
 
-## 🛠️ Technology Stack
+## Candidate Profile
 
-- **Core:** [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [Vite](https://vite.dev/)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **Data Visualizations:** [Recharts](https://recharts.org/) + HTML5 Canvas
-- **Routing:** [React Router v7](https://reactrouter.com/)
-- **Icons & Delight:** [Lucide Icons](https://lucide.dev/) + [Canvas Confetti](https://www.npmjs.com/package/canvas-confetti)
-- **Typography:** Google Fonts (*Plus Jakarta Sans*, *JetBrains Mono*, *Space Grotesk*)
-
----
-
-## 🚀 Getting Started Locally
-
-### Prerequisites
-- Node.js (v18.0 or higher recommended, tested on v22.16)
-- npm (v9.0 or higher)
-
-### Installation
-```bash
-# Clone or navigate to the project directory
-cd portfolio
-
-# Install dependencies
-npm install
-
-# Start local development server
-npm run dev
-```
-
-The application will be live at:
-```
-http://localhost:5173/
-```
-
-### Production Build
-```bash
-npm run build
-```
-The optimized bundle will be compiled into the `dist/` directory, ready for deployment to Vercel, Netlify, or GitHub Pages.
+- **Name:** Muhammed Irfan M A
+- **Role:** Data Analyst
+- **Education:** Bachelor of Computer Applications (BCA), Mahatma Gandhi University – Al Ameen College, Edathala (2023–2026)
+- **Certification:** Certificate in Mastering Data Analytics with Dashboards (AC/SFS/IT/06), A+ Grade, ASAP Kerala (Govt. of Kerala Undertaking), conducted by Skillspark Finishing School Pvt Ltd, Patton (1 Feb 2026 – 7 Oct 2026, issued 13 Oct 2026, Certificate No. ASAPTBONLDA26004)
+- **Location:** Ernakulam, Kerala, India
+- **Email:** [muhammedirfanma112@gmail.com](mailto:muhammedirfanma112@gmail.com)
+- **Phone:** +91 8075176518
+- **LinkedIn:** [linkedin.com/in/muhammed-irfan-911208251](https://www.linkedin.com/in/muhammed-irfan-911208251)
+- **GitHub:** [github.com/irfan564](https://github.com/irfan564)
 
 ---
 
-## 📂 Project Structure
+## Featured Projects
+
+1. **Retail BI – E-Commerce Analytics**
+   - *Tools:* Power BI, DAX, SQL, Python
+   - *Focus:* Customer acquisition cohorts, average order value (AOV), delivery delay diagnostics, and executive KPI dashboarding.
+2. **Indian Tech Jobs 2026 Analytics Portal**
+   - *Tools:* Python, Django, PostgreSQL, Natural Language to SQL
+   - *Focus:* Web interface allowing recruiters to query tech job market records and salary distributions using natural language with a strict read-only safety validator.
+3. **Movie Rental Analysis**
+   - *Tools:* Python, SQL
+   - *Focus:* Exploratory data analysis using the public Sakila sample database (16,044 rentals across 1,000 films), analyzing genre turnover velocity, replacement costs, and peak rental timing heatmaps.
+
+---
+
+## Technical Stack
+
+- **Framework:** React 19 + TypeScript + Vite
+- **Styling:** Tailwind CSS v4 (light editorial aesthetic, Inter font, 960px max width)
+- **Routing:** React Router v7
+- **Icons:** Lucide React
+- **SEO & Social:** OpenGraph meta tags, favicon, sitemap, robots.txt
+
+---
+
+## Project Structure
 
 ```
 portfolio/
 ├── public/
-│   └── favicon.svg               # Custom monogram "IM" SVG icon
+│   ├── favicon.svg               # Editorial monogram icon
+│   ├── og-image.png              # Open Graph social preview
+│   ├── robots.txt                # Search engine crawler instructions
+│   └── sitemap.xml               # URL index
 ├── src/
 │   ├── components/
-│   │   ├── AnalyticsDashboard.tsx # Interactive sample BI showcase (Recharts)
-│   │   ├── ContactSection.tsx     # Contact form with email copy & mailto fallback
-│   │   ├── EducationCard.tsx      # Clean academic timeline cards
-│   │   ├── Footer.tsx             # Global footer with social links & status
-│   │   ├── Icons.tsx              # Vector SVG icons for GitHub & LinkedIn
-│   │   ├── InteractiveDataCanvas.tsx # Animated node network & telemetry
-│   │   ├── MouseGlow.tsx          # Subtle ambient cursor follower
-│   │   ├── Navbar.tsx             # Glassmorphic header with "IM" monogram
-│   │   ├── ProcessTimeline.tsx    # 4-step analytical approach timeline
-│   │   ├── ProjectCard.tsx        # Project preview card with abstract covers
-│   │   ├── ScrollToTop.tsx        # Route transition scroll reset
-│   │   ├── SectionHeading.tsx     # Reusable editorial typography headers
-│   │   └── SkillCard.tsx          # Analytical toolkit cards with hover descriptions
+│   │   ├── ContactSection.tsx    # Direct contact channels with copy buttons
+│   │   ├── Footer.tsx            # Minimal editorial footer
+│   │   ├── Icons.tsx             # Vector SVG icons for GitHub & LinkedIn
+│   │   ├── Navbar.tsx            # Sticky header with anchor navigation & resume button
+│   │   ├── ProjectCard.tsx       # Project card with tools, dataset, findings, and links
+│   │   └── ScrollToTop.tsx       # Scrolls window to top on route change
 │   ├── data/
-│   │   ├── profile.ts             # Muhammed Irfam M A's profile & bio
-│   │   ├── projects.ts            # Detailed project case studies & code snippets
-│   │   ├── sampleAnalyticsData.ts # Data for interactive dashboard simulation
-│   │   └── skills.ts              # Categorized skills with analytical use-cases
+│   │   ├── profile.ts            # Bio, contact, education, and certificate info
+│   │   ├── projects.ts           # Case studies, datasets, findings, and code snippets
+│   │   └── skills.ts             # Grouped technical skill chips
 │   ├── pages/
-│   │   ├── AboutPage.tsx          # Deep dive into analytical philosophy & background
-│   │   ├── ContactPage.tsx        # Dedicated contact page & recruiter quick ref
-│   │   ├── HomePage.tsx           # Full landing experience with all sections
-│   │   ├── ProjectDetailPage.tsx  # In-depth case studies with SQL & Python code
-│   │   └── ProjectsPage.tsx       # Filterable gallery (Python, SQL, Power BI, etc.)
+│   │   ├── HomePage.tsx          # Single scrolling main page
+│   │   ├── NotFoundPage.tsx      # 404 error page with return home link
+│   │   └── ProjectDetailPage.tsx # Dedicated case study page per project
 │   ├── types/
-│   │   └── index.ts               # Core TypeScript data contracts
-│   ├── App.tsx                    # React Router configuration
-│   ├── index.css                  # Design tokens & glassmorphic styles
-│   └── main.tsx                   # React root mount
+│   │   └── index.ts              # Core TypeScript interfaces
+│   ├── App.tsx                   # Main layout and route configuration
+│   ├── index.css                 # Clean CSS tokens & Inter typography
+│   └── main.tsx                  # Application entry point
 ├── package.json
+├── tsconfig.json
 └── vite.config.ts
 ```
 
 ---
 
-## ✏️ How to Add or Edit Projects
+## Getting Started Locally
 
-All project data is decoupled from UI presentation in `src/data/projects.ts`. To add a new case study:
+### Prerequisites
+- Node.js (v18.0 or higher)
+- npm (v9.0 or higher)
 
-1. Open `src/data/projects.ts`.
-2. Add a new object adhering to the `Project` interface (including title, description, schema notes, analytical approach, code snippets, and findings).
-3. The new project will automatically appear on both the Home page, the filterable Projects page, and receive its own dedicated `/projects/:id` case study URL!
+### Installation & Run
+```bash
+# 1. Install dependencies
+npm install
 
----
+# 2. Start development server
+npm run dev
 
-## 👤 Profile & Contacts
+# 3. Build for production
+npm run build
 
-- **Candidate:** Muhammed Irfam M A
-- **Role:** Data Analyst | Business Intelligence | Data Analytics
-- **Location:** Ernakulam, Kerala, India
-- **GitHub:** [github.com/irfan564](https://github.com/irfan564)
-- **LinkedIn:** [linkedin.com/in/muhammed-irfan-911208251](https://www.linkedin.com/in/muhammed-irfan-911208251?utm_source=share_via&utm_content=profile&utm_medium=member_android)
-- **Email:** [muhammedirfanma112@gmail.com](mailto:muhammedirfanma112@gmail.com)
+# 4. Run linter
+npm run lint
+```

@@ -1,52 +1,76 @@
-export interface Skill {
+export interface ProjectScreenshot {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
+export interface ProjectCodeSnippet {
+  language: 'sql' | 'python';
+  title: string;
+  code: string;
+  explanation: string;
+}
+
+export interface ProjectDataset {
   name: string;
-  category: 'programming' | 'database' | 'bi' | 'preparation';
-  icon: string;
-  description: string;
-  keyUseCases: string[];
+  rowCount: string;
+  source: string;
+  cleaning: string;
 }
 
 export interface Project {
   id: string;
   title: string;
-  subtitle: string;
-  status: 'Completed' | 'In Progress / Planned';
-  description: string;
-  detailedOverview: string;
-  businessProblem: string;
-  datasetInfo: {
-    source: string;
-    records?: string;
-    attributes: string[];
-    schemaDescription: string;
-  };
-  technologies: string[];
-  analyticalTechniques: string[];
-  dataPreparation: string[];
-  analyticalApproach: string[];
-  codeSnippets?: {
-    language: 'sql' | 'python';
-    title: string;
-    code: string;
-    explanation: string;
-  }[];
-  keyFindings: string[];
-  businessImplications: string[];
-  metricsHighlighted?: {
-    label: string;
-    value: string;
-    change?: string;
-    description: string;
-  }[];
+  businessQuestion: string;
+  tools: string[];
+  dataset: ProjectDataset;
+  keyFindings: string[]; // 2 findings with numbers
+  problem: string;
+  whatIDid: string[]; // 3-5 bullets
+  recommendation: string;
+  screenshots: ProjectScreenshot[]; // min 2
+  codeSnippet?: ProjectCodeSnippet;
+  liveUrl?: string; // empty string hides button
   githubUrl: string;
-  featured: boolean;
-  category: ('Python' | 'SQL' | 'Power BI' | 'Data Analysis' | 'Business Intelligence')[];
 }
 
-export interface EducationItem {
+export interface SkillGroup {
+  category: string;
+  skills: string[];
+}
+
+export interface CertificateInfo {
+  title: string;
+  grade: string;
+  issuer: string;
+  conductedBy: string;
+  period: string;
+  issuedDate: string;
+  certificateNo: string;
+  fileUrl: string;
+}
+
+export interface EducationInfo {
   degree: string;
   institution: string;
-  type: string;
-  description: string;
-  highlights: string[];
+  duration: string;
+}
+
+export interface ContactInfo {
+  email: string;
+  phone: string;
+  linkedin: string;
+  github: string;
+  location: string;
+}
+
+export interface ProfileData {
+  name: string;
+  role: string;
+  bioSentences: string[];
+  location: string;
+  resumeUrl: string;
+  certificate: CertificateInfo;
+  education: EducationInfo;
+  contact: ContactInfo;
 }

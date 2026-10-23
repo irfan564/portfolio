@@ -1,320 +1,225 @@
-import { Link } from 'react-router-dom';
-import {
-  ArrowRight,
-  Sparkles,
-  ChevronDown,
-  Database,
-  BarChart2,
-  FileSpreadsheet,
-  Terminal,
-  Search,
-  MessageSquareCode
-} from 'lucide-react';
+import React from 'react';
 import { profile } from '../data/profile';
-import { skillCategories } from '../data/skills';
 import { projects } from '../data/projects';
-import { SectionHeading } from '../components/SectionHeading';
-import { InteractiveDataCanvas } from '../components/InteractiveDataCanvas';
-import { SkillCard } from '../components/SkillCard';
+import { skillGroups } from '../data/skills';
 import { ProjectCard } from '../components/ProjectCard';
-import { AnalyticsDashboard } from '../components/AnalyticsDashboard';
-import { ProcessTimeline } from '../components/ProcessTimeline';
-import { EducationCard } from '../components/EducationCard';
 import { ContactSection } from '../components/ContactSection';
+import { GithubIcon, LinkedinIcon } from '../components/Icons';
+import {
+  MapPin,
+  FileDown,
+  ArrowDown,
+  Award,
+  ExternalLink,
+  GraduationCap
+} from 'lucide-react';
 
 export const HomePage: React.FC = () => {
-  const headlineWords = "Turning Raw Data Into Meaningful Decisions.".split(" ");
-
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
+  const scrollToProjects = () => {
+    const el = document.getElementById('projects');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="relative">
+    <div className="max-w-[960px] mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-16 sm:space-y-20">
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          HERO SECTION
+          1. HERO SECTION
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-screen flex items-center pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
-        {/* Subtle radial tech ambient backdrop */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <section className="space-y-6 pt-4 sm:pt-6">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
+            <MapPin className="w-3.5 h-3.5 text-slate-400" />
+            <span>{profile.location}, India</span>
+          </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Column: Hero Typography & CTAs */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
-              {/* Availability & Intro Tag */}
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono tracking-wider uppercase">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                  <span>DATA ANALYST • BUSINESS INTELLIGENCE</span>
-                </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
+            {profile.name} — {profile.role}
+          </h1>
 
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span>{profile.availabilityStatus}</span>
-                </div>
-              </div>
+          <div className="space-y-1 text-base sm:text-lg text-slate-700 max-w-2xl font-normal leading-relaxed">
+            <p>{profile.bioSentences[0]}</p>
+            <p>{profile.bioSentences[1]}</p>
+          </div>
+        </div>
 
-              {/* Main Headline with Staggered Word Reveal */}
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.08]">
-                {headlineWords.map((word, idx) => (
+        {/* Hero CTAs */}
+        <div className="flex flex-wrap items-center gap-3 pt-2">
+          <button
+            onClick={scrollToProjects}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 transition-colors shadow-sm"
+          >
+            <span>View Projects</span>
+            <ArrowDown className="w-4 h-4" />
+          </button>
+
+          <a
+            href={profile.resumeUrl}
+            download="Muhammed_Irfan_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md text-sm font-medium text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 transition-colors shadow-sm"
+          >
+            <FileDown className="w-4 h-4 text-slate-600" />
+            <span>Download Resume</span>
+          </a>
+
+          <a
+            href={profile.contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-md text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 transition-colors"
+          >
+            <LinkedinIcon className="w-4 h-4 text-[#0A66C2]" />
+            <span>LinkedIn</span>
+          </a>
+
+          <a
+            href={profile.contact.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-md text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 transition-colors"
+          >
+            <GithubIcon className="w-4 h-4 text-slate-900" />
+            <span>GitHub</span>
+          </a>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          2. PROJECTS SECTION
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section id="projects" className="space-y-6 scroll-mt-20">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Projects</h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Selected analytical work using SQL, Power BI, and Python with real problem statements and transparent findings.
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          3. SKILLS SECTION (Grouped Chips Only)
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section id="skills" className="space-y-6 scroll-mt-20">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Skills</h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Core analytical tools and technical competencies.
+          </p>
+        </div>
+
+        <div className="bg-white border border-slate-200 rounded-lg p-6 sm:p-7 space-y-6">
+          {skillGroups.map((group) => (
+            <div key={group.category} className="space-y-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 block">
+                {group.category}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
                   <span
-                    key={idx}
-                    className="inline-block mr-2.5 transition-all duration-300 hover:text-cyan-300"
-                    style={{
-                      animationDelay: `${idx * 0.08}s`
-                    }}
+                    key={skill}
+                    className="px-3 py-1 rounded text-xs font-mono bg-slate-100 text-slate-800 border border-slate-200"
                   >
-                    {word === 'Decisions.' ? (
-                      <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
-                        {word}
-                      </span>
-                    ) : (
-                      word
-                    )}
+                    {skill}
                   </span>
                 ))}
-              </h1>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-              {/* Supporting Text */}
-              <p className="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed">
-                {profile.heroSupportingText}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          4. CERTIFICATE SECTION
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section id="certificate" className="space-y-6 scroll-mt-20">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Certificate</h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Government of Kerala undertaking credential in Data Analytics.
+          </p>
+        </div>
+
+        <div className="bg-white border border-slate-200 rounded-lg p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-xl">
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                Grade: {profile.certificate.grade}
+              </span>
+              <span className="text-xs font-mono text-slate-500">
+                No. {profile.certificate.certificateNo}
+              </span>
+            </div>
+
+            <h3 className="text-lg font-semibold text-slate-900">
+              {profile.certificate.title}
+            </h3>
+
+            <div className="text-xs text-slate-600 space-y-0.5">
+              <p>
+                <span className="font-medium text-slate-700">Issued by: </span>
+                {profile.certificate.issuer}
               </p>
-
-              {/* Technical Stack Quick Ribbon */}
-              <div className="pt-2 flex flex-wrap items-center gap-2 font-mono text-xs text-slate-400">
-                <span className="text-slate-500 text-[11px] uppercase tracking-wider mr-1">Toolkit:</span>
-                <span className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5">
-                  <Terminal className="w-3 h-3 text-cyan-400" /> Python
-                </span>
-                <span className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5">
-                  <Database className="w-3 h-3 text-sky-400" /> SQL & PostgreSQL
-                </span>
-                <span className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5">
-                  <BarChart2 className="w-3 h-3 text-indigo-400" /> Power BI
-                </span>
-                <span className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5">
-                  <FileSpreadsheet className="w-3 h-3 text-emerald-400" /> Excel
-                </span>
-              </div>
-
-              {/* Primary & Secondary Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => scrollToSection('featured-projects')}
-                  className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 shadow-[0_0_30px_-5px_rgba(56,189,248,0.5)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  <span>Explore My Work</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium text-slate-200 bg-slate-900/90 hover:bg-slate-800 border border-white/10 hover:border-cyan-500/40 transition-all duration-200"
-                >
-                  <Sparkles className="w-4 h-4 text-cyan-400" />
-                  <span>Let's Connect</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Column: Abstract Interactive Data Visualization */}
-            <div className="lg:col-span-5">
-              <InteractiveDataCanvas />
+              <p>
+                <span className="font-medium text-slate-700">Conducted by: </span>
+                {profile.certificate.conductedBy}
+              </p>
+              <p>
+                <span className="font-medium text-slate-700">Duration: </span>
+                {profile.certificate.period} (Issued {profile.certificate.issuedDate})
+              </p>
             </div>
           </div>
 
-          {/* Bottom Scroll Indicator */}
-          <div className="pt-16 lg:pt-20 flex justify-center">
-            <button
-              onClick={() => scrollToSection('about-section')}
-              className="flex flex-col items-center gap-2 text-xs font-mono text-slate-400 hover:text-cyan-400 transition-colors group cursor-pointer"
-              aria-label="Scroll to About Me section"
+          <div className="shrink-0 w-full md:w-auto">
+            <a
+              href={profile.certificate.fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-3 w-full md:w-auto p-4 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-colors"
             >
-              <span>DISCOVER INSIGHTS</span>
-              <ChevronDown className="w-4 h-4 animate-bounce group-hover:text-cyan-300" />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          ABOUT ME SECTION
-          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section id="about-section" className="py-24 border-t border-white/[0.08] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="About Me"
-            title={profile.aboutHeading}
-            description="Turning raw analytical curiosity into structured datasets and dependable business narratives."
-          />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-            {/* Left Narrative Column */}
-            <div className="lg:col-span-6 p-7 sm:p-9 rounded-2xl bg-[#090E1A]/85 border border-white/[0.08] backdrop-blur-xl shadow-xl flex flex-col justify-between">
-              <div className="space-y-5 text-sm sm:text-base text-slate-300 leading-relaxed">
-                {profile.aboutBio.map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
-                ))}
+              <div className="p-2.5 rounded bg-white border border-slate-200 text-blue-700">
+                <Award className="w-6 h-6" />
               </div>
-
-              <div className="mt-8 pt-6 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <span className="text-[11px] font-mono text-slate-400 block uppercase">Based In</span>
-                  <span className="text-sm font-semibold text-white">{profile.location}</span>
+              <div>
+                <div className="text-xs font-semibold text-slate-900 flex items-center gap-1 group-hover:text-blue-700 transition-colors">
+                  <span>View Certificate PDF</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </div>
-                <div>
-                  <span className="text-[11px] font-mono text-slate-400 block uppercase">Education</span>
-                  <span className="text-sm font-semibold text-white">BCA • SkillSpark</span>
+                <div className="text-[11px] text-slate-500">
+                  certificate.pdf
                 </div>
-                <Link
-                  to="/about"
-                  className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 hover:underline"
-                >
-                  <span>Read Full Bio</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
               </div>
-            </div>
-
-            {/* Right Interactive Focus Areas Column */}
-            <div className="lg:col-span-6 flex flex-col justify-between gap-4">
-              {profile.focusAreas.map((area, idx) => (
-                <div
-                  key={area.title}
-                  className="p-6 rounded-2xl bg-[#090E1A]/85 border border-white/[0.08] hover:border-cyan-500/30 transition-all duration-300 hover:translate-x-1 shadow-lg"
-                >
-                  <div className="flex items-center gap-3.5 mb-2.5">
-                    <div className="p-2.5 rounded-xl bg-slate-900 border border-white/[0.08] text-cyan-400">
-                      {idx === 0 && <Search className="w-5 h-5" />}
-                      {idx === 1 && <BarChart2 className="w-5 h-5 text-sky-400" />}
-                      {idx === 2 && <MessageSquareCode className="w-5 h-5 text-indigo-400" />}
-                    </div>
-                    <h3 className="font-display font-bold text-lg text-white">
-                      {area.title}
-                    </h3>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed pl-12">
-                    {area.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+            </a>
           </div>
         </div>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          TECHNICAL SKILLS SECTION
+          5. EDUCATION SECTION (One Line)
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section id="skills-section" className="py-24 border-t border-white/[0.08] bg-[#050811]/60 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Technical Toolkit"
-            title="My Analytical Toolkit."
-            description="Practical technologies and analytical methodologies used to prepare, validate, query, and visualize business data."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {skillCategories.map((category) => (
-              <SkillCard key={category.id} categoryGroup={category} />
-            ))}
-          </div>
+      <section className="space-y-3">
+        <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Education</h2>
+        <div className="bg-white border border-slate-200 rounded-lg p-5 flex items-center gap-3">
+          <GraduationCap className="w-5 h-5 text-blue-700 shrink-0" />
+          <p className="text-sm font-medium text-slate-800">
+            {profile.education.degree}, {profile.education.institution}, {profile.education.duration}
+          </p>
         </div>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          INTERACTIVE ANALYTICS SHOWCASE
+          6. CONTACT SECTION
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section id="showcase-section" className="py-24 border-t border-white/[0.08] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Interactive Showcase"
-            title="Data, Made Visible."
-            description="An interactive business intelligence simulation demonstrating metric definitions, dimensional aggregations, and responsive dashboard design."
-          />
-
-          <AnalyticsDashboard />
-        </div>
-      </section>
-
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          FEATURED PROJECTS SECTION
-          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section id="featured-projects" className="py-24 border-t border-white/[0.08] bg-[#050811]/60 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Featured Projects"
-            title="Selected Work."
-            description="Real datasets. Analytical thinking. Meaningful insights."
-          />
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} featuredMode={true} />
-            ))}
-          </div>
-
-          <div className="mt-14 text-center">
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-slate-900 border border-white/10 hover:border-cyan-500/40 hover:text-white transition-all hover:scale-105"
-            >
-              <span>Explore All Projects & Filterable Gallery</span>
-              <ArrowRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          MY ANALYTICAL APPROACH
-          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 border-t border-white/[0.08] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Analytical Process"
-            title="From Questions to Insights."
-            description="A systematic four-phase framework transforming raw business ambiguity into validated decisions."
-          />
-
-          <ProcessTimeline />
-        </div>
-      </section>
-
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          EDUCATION & LEARNING
-          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 border-t border-white/[0.08] bg-[#050811]/60 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Academic Credentials"
-            title="Education & Learning."
-            description="Foundational computing degree and specialized professional data analytics finishing curriculum."
-          />
-
-          <EducationCard />
-        </div>
-      </section>
-
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          CONTACT SECTION
-          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section id="contact-section" className="py-24 border-t border-white/[0.08] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Get In Touch"
-            title="Have a Question Worth Exploring?"
-            description="I'm interested in opportunities where analytical thinking, data, and technology come together to solve meaningful problems."
-          />
-
-          <ContactSection />
-        </div>
-      </section>
+      <ContactSection />
     </div>
   );
 };
