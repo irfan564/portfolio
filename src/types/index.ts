@@ -16,6 +16,7 @@ export interface ProjectDataset {
   rowCount: string;
   source: string;
   cleaning: string;
+  limitations?: string;
 }
 
 export interface Project {
@@ -24,11 +25,13 @@ export interface Project {
   businessQuestion: string;
   tools: string[];
   dataset: ProjectDataset;
+  dataNote?: string; // shown on page for fictional datasets
   keyFindings: string[]; // 2 findings with numbers
   problem: string;
   whatIDid: string[]; // 3-5 bullets
   recommendation: string;
-  screenshots: ProjectScreenshot[]; // min 2
+  limitations?: string;
+  screenshots: ProjectScreenshot[];
   codeSnippet?: ProjectCodeSnippet;
   liveUrl?: string; // empty string hides button
   githubUrl: string;

@@ -182,6 +182,7 @@ export const HomePage: React.FC = () => {
           <div className="shrink-0 w-full md:w-auto">
             <a
               href={profile.certificate.fileUrl}
+              download="Muhammed_Irfan_Certificate.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-3 w-full md:w-auto p-4 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-colors"

@@ -10,7 +10,11 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const hasLiveUrl = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
-  const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl.trim().length > 0 && !project.githubUrl.includes('[FILL'));
+  const hasGithubUrl = Boolean(
+    project.githubUrl &&
+    project.githubUrl.trim().length > 0 &&
+    !project.githubUrl.startsWith('[FILL')
+  );
 
   return (
     <article className="bg-white border border-slate-200 rounded-lg p-6 sm:p-7 space-y-5 transition-colors hover:border-slate-300">

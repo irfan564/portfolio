@@ -8,7 +8,8 @@ import {
   ExternalLink,
   Copy,
   Check,
-  Image as ImageIcon
+  Image as ImageIcon,
+  AlertTriangle
 } from 'lucide-react';
 
 export const ProjectDetailPage: React.FC = () => {
@@ -54,7 +55,11 @@ export const ProjectDetailPage: React.FC = () => {
   };
 
   const hasLiveUrl = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
-  const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl.trim().length > 0 && !project.githubUrl.includes('[FILL'));
+  const hasGithubUrl = Boolean(
+    project.githubUrl &&
+    project.githubUrl.trim().length > 0 &&
+    !project.githubUrl.startsWith('[FILL')
+  );
 
   return (
     <div className="max-w-[960px] mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-12">
@@ -128,6 +133,16 @@ export const ProjectDetailPage: React.FC = () => {
           )}
         </div>
       </header>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          DATA NOTE (fictional dataset notice)
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {project.dataNote && (
+        <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-lg px-5 py-4 text-sm text-amber-900">
+          <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+          <span>{project.dataNote}</span>
+        </div>
+      )}
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           CASE STUDY CONTENT (ONLY REQUIRED SECTIONS)
@@ -218,6 +233,18 @@ export const ProjectDetailPage: React.FC = () => {
             {project.recommendation}
           </div>
         </section>
+
+        {/* 5b. Limitations */}
+        {project.limitations && (
+          <section className="space-y-3">
+            <h2 className="text-lg font-semibold text-slate-900 tracking-tight">
+              Limitations
+            </h2>
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 text-sm text-slate-700 leading-relaxed">
+              {project.limitations}
+            </div>
+          </section>
+        )}
 
         {/* 6. Screenshots (min 2) */}
         <section className="space-y-4">
